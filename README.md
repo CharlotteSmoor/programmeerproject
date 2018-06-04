@@ -4,5 +4,10 @@ This project will visualize all the vulcanoes in the world and answer the questi
 ![](doc/sketch.png)
 
 The main features of this project are the countries, the name and type and of the volcanoes, the number of eruptions and the number of deaths. This are also the minimum viable product. In addition, the year of (historical) eruptions could be included to make a timeline.
+The first screen will contain the map, the donut chart which shows all existing types of volcanoes and possibly a timeline containing all historic eruptions. Clicking on a country, a donutchart will appear that shows all types of volcanoes in that specific country. By clicking on a type of volcano in the donut chart, a scatterplot will appear. This scatterplot shows the number of eruptions per type of volcano. By using a dropdown, it is also possible to change the y-value of the scatterplot and to see the number of deaths per type of volcano. Hopefully, this will provide an answer to the question whether there is a correlation between types of vulcanoes and the number of eruptions and the number of deaths.
 
-Data will be obtained from http://volcano.si.edu/list_volcano_holocene.cfm and https://www.ngdc.noaa.gov/nndc/servlet/ShowDatasets?dataset=102557&search_look=50&display_look=50. The data must be transformed into JSON objects before use.
+Data will be obtained from http://volcano.si.edu/list_volcano_holocene.cfm and https://www.ngdc.noaa.gov/nndc/servlet/ShowDatasets?dataset=102557&search_look=50&display_look=50. The obtained data must be transformed into JSON objects before use.
+
+Libraries that need to be included are d3 and d3-tip. 
+
+The hardest part of this project will be to prepare the data for use and to make clear visualisations.
