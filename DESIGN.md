@@ -15,6 +15,10 @@ After loading in the data, my program will process the data resulting in the fol
   <li>the sum of deaths specific for a type of volcano per year (scatterplot 2) </li>
 </ul>
 
+## Diagram
+
+![](doc/diagram.png)
+
 ## D3 plug ins
 
 <ul>
