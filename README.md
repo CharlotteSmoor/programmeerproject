@@ -1,5 +1,5 @@
 # programmeerproject
-Link to project: [Pages](https://charlottesmoor.github.io/programmeerproject/)
+Link to project: [project](https://charlottesmoor.github.io/programmeerproject/)
 
 This project will visualize all the vulcanoes in the world and answer the question whether there is a correlation between types of  vulcanoes and the number of eruptions and possibly the number of deaths. 
 
