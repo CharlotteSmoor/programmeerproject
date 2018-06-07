@@ -1,13 +1,12 @@
+// loads in data
 window.onload = function() {
-};
-
-// load in data using queue
-d3.queue()
+  queue()
   .defer(d3.json, 'testdata.json')
   .awaitAll(load_data);
 
-  function load_data(error, data){
-    d3.json('testdata.json', function(error, response) {
-    console.log("hello")
-  })
+function load_data(error, data){
+  if (error) throw error;
+      console.log(data)
+      MakeMap()
 }
+};
