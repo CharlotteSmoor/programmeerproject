@@ -6,7 +6,7 @@ window.onload = function() {
 
 function load_data(error, data){
   if (error) throw error;
-      console.log(data)
+      //console.log(data)
       MakeMap()
 }
 };
