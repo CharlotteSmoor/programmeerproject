@@ -2,7 +2,7 @@ import csv
 import sys
 import json
 
-fieldNames = ("Year", "TSU","EQ","Name", "Location", "Country", "Latitude",	"Longitude","Elevation","Type","Status", "TOTAL_DEATHS","VEI");
+fieldNames = ("country", "code");
 
 
 # https://jaranto.blogspot.nl/2012/12/transform-csv-file-to-json-file-with.html
