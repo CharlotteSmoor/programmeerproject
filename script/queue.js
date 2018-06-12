@@ -17,13 +17,15 @@ function load_data(data){
           if (eruptions[i].country == country_codes[j].country){
             var country = country_codes[j].code
             var volcano = eruptions[i].name
+            var type = eruptions[i].type
           }
         }
-    volcanos_per_country.push({Country: country, Volcano: volcano})
+    volcanos_per_country.push({Country: country, Volcano: volcano, Type: type})
   }
   console.log(volcanos_per_country)
-
-      MakeMap(volcanos_per_country)
+  console.log(eruptions)
+      color_Country(volcanos_per_country)
+      MakeMap(error, colorCountry, volcanos_per_country)
 
   });
 });
