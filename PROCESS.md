@@ -11,3 +11,15 @@
 
 # day 7
 - linked the data with world map
+
+# day 8
+- Created a donutchart showing all the different types of volcanos that exist in the world. Had a few problems with placing the chart on the webpage in a way that it would look appealing to the user.
+
+# day 9
+- Found out that I needed to make more changed to my dataset in order to make all the visualisations. Originally, the data was processed in javascript which made loading my webpage very slow. I started to transform the data in python.
+
+# day 10
+- presented my project to classmates and discussed all the problems I had with my dataset. Later on, I worked on the python code which would transform the data in a more convenient way.
+
+# day 11
+- I made a few changes in the python code and created the worldmap based on the new dataset. I also added a slider which allows the user to see in which year in which country a volcano erupted.
