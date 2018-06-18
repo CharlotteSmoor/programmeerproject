@@ -1,22 +1,30 @@
 // World map
 
-function color_Country(data) {
+function color_Country(list, alldata, specific_year_data) {
         colorCountry = {}
-        for (var i = 0; i < data.length; i++){
-            country = data[i].Country
-            colorCountry[country] = {fillKey: "COUNTRY", value: data[i].Volcano };
-        	}
-          return colorCountry
+        
+        for (var i = 0; i < list.length; i++){
+          country = list[i]
+          colorCountry[country] = {fillKey: "ALL", value: alldata[list[i]]}
+        }
 
-    }
+        if (specific_year_data != undefined || specific_year_data != null){
+          for (var j = 0; j < specific_year_data.length; j++){
+            country = specific_year_data[j]
+            colorCountry[country] = {fillKey: "YEAR", value: specific_year_data[j]}
+          }
+        }
+        return colorCountry
+}
 
 // creates world map
-function MakeMap(error, colorCountry, list) {
+function MakeMap(error, colorCountry) {
   if (error) throw error;
   console.log(colorCountry)
     var map = new Datamap({element: document.getElementById('map'),
     fills: {
-      COUNTRY: '#a50f15',
+      ALL: '#a50f15',
+      YEAR: 'orange',
       defaultFill: "green"
   },
   data: colorCountry,
@@ -32,12 +40,12 @@ function MakeMap(error, colorCountry, list) {
         if (!data){
           return ['<div class="hoverinfo"><strong>',
                   geo.properties.name,
-                  ': no known volcanoes',
+                  ': no known volcano eruptions',
                   '</strong></div>'].join('');
         }
           return ['<div class="hoverinfo"><strong>',
               geo.properties.name, '</strong>',
-            '<br>Volcanoes: <strong>', data.value , '</strong>',
+            '<br>Volcanoes: <strong>', data.value, '</strong>',
             '</div>'].join('');},
       },
       popOnHover: true,

@@ -6,6 +6,7 @@ American Samoa,ASM
 Andorra,AND
 Angola,AGO
 Anguilla,AIA
+Antarctica,ATA
 Antigua and Barbuda,ATG
 Argentina,ARG
 Armenia,ARM
@@ -53,8 +54,8 @@ Croatia,HRV
 Cuba,CUB
 Cyprus,CYP
 Czech Republic,CZE
-Democratic People's Republic of Korea,PRK
-Democratic Republic of the Congo,COD
+North Korea,PRK
+Congo,COD
 Denmark,DNK
 Djibouti,DJI
 Dominica,DMA
@@ -172,15 +173,15 @@ Qatar,QAT
 Republic of Korea,KOR
 R_union,REU
 Romania,ROU
-Russian Federation,RUS
+Russia,RUS
 Rwanda,RWA
 Saint-Barthélemy,BLM
 Saint Helena,SHN
-Saint Kitts and Nevis,KNA
+St. Kitts & Nevis,KNA
 Saint Lucia,LCA
 Saint-Martin (French part),MAF
 Saint Pierre and Miquelon,SPM
-Saint Vincent and the Grenadines,VCT
+St. Vincent & the Grenadines,VCT
 Samoa,WSM
 San Marino,SMR
 Sao Tome and Principe,STP
@@ -192,7 +193,7 @@ Sierra Leone,SLE
 Singapore,SGP
 Slovakia,SVK
 Slovenia,SVN
-Solomon Islands,SLB
+Solomon Is.,SLB
 Somalia,SOM
 South Africa,ZAF
 Spain,ESP
@@ -204,6 +205,7 @@ Swaziland,SWZ
 Sweden,SWE
 Switzerland,CHE
 Syrian Arab Republic,SYR
+Taiwan,TWN
 Tajikistan,TJK
 Thailand,THA
 The former Yugoslav Republic of Macedonia,MKD
@@ -211,7 +213,7 @@ Timor-Leste,TLS
 Togo,TGO
 Tokelau,TKL
 Tonga,TON
-Trinidad and Tobago,TTO
+Trinidad,TTO
 Tunisia,TUN
 Turkey,TUR
 Turkmenistan,TKM
@@ -221,8 +223,8 @@ Uganda,UGA
 Ukraine,UKR
 United Arab Emirates,ARE
 United Kingdom of Great Britain and Northern Ireland,GBR
-United Republic of Tanzania,TZA
-United States of America,USA
+Tanzania,TZA
+United States,USA
 United States Virgin Islands,VIR
 Uruguay,URY
 Uzbekistan,UZB
