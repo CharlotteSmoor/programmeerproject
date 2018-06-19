@@ -1,15 +1,24 @@
 // Donut chart
 // http://www.adeveloperdiary.com/d3-js/create-a-simple-donut-chart-using-d3-js/
 
-function ready_donutdata(all_volcano_types, count_types){
-  donutdata = []
-  for(var i = 0; i < all_volcano_types.length; i++){
-      var type = all_volcano_types[i]
-      var count = count_types[i]
-      var percentage = parseFloat(((count/(817)*100))).toFixed(2);
-      donutdata.push({type: type, percentage: percentage})
-    }
-  console.log(donutdata)
+function ready_donutdata(data, list){
+  var donutdata = []
+  var counter = []
+  var total_volcanoes = Object.keys(data).length
+  for (var i = 0; i < list.length; i++){
+      var count = 0;
+      Object.keys(data).forEach(function(key) {
+        if (data[key] == list[i]){
+          count = count + 1
+          var type = list[i]
+          donutdata.push({type: type, percentage: parseFloat(((count/(total_volcanoes)*100))).toFixed(2)})
+
+        }
+
+    })
+  }
+    console.log(donutdata)
+    return donutdata
 }
 
 function makeDonut(donutdata){

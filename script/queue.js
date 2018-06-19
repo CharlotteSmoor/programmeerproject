@@ -28,7 +28,7 @@ function load_data(data){
               //d3.json('/data/countryCodes.json', function(error, cc) {
       if (error) throw error;
       var allCountries = ["ATA","CAN","CHL","CHN","CMR","COG","COL","COM","CPV","CRI","ECU","ERI","ESP","ETH","GLP","GRC","GTM","IDN","ISL","ITA","JPN","KNA","MEX","MSR","MTQ","NIC","NZL","PER","PHL","PNG","PRK","PRT","RUS","SAU","SLB","SLV","TON","TTO","TUR","TWN","TZA","USA","VCT","VUT","WSM","YEM"]
-
+      var allTypes = ["Caldera","Pyroclastic cone","Submarine volcano","Stratovolcano","Maar","Shield volcano","Complex volcano","Fissure vent","Pumice cone","Subglacial volcano","Crater rows","Tuff cone","Cinder cone","Lava dome","Pyroclastic shield","Volcanic field","Mud volcano"]
   //     var volcanos_per_country = [];
   //       for (var i = 1; i < eruptions.length; i++){
   //         for(var j = 0; j < country_codes.length; j++){
@@ -77,22 +77,30 @@ function load_data(data){
   //   console.log(list)
   //     console.log(list.NZL[1]["volcanoType"])
 
+  // color_Country(allCountries, volcanoes_country, [])
+  // MakeMap(error, colorCountry)
+
+
+  // implementation of the slider
   var slider = document.getElementById("myRange");
   var output = document.getElementById("demo");
   output.innerHTML = slider.value; // Display the default slider value
 
-  // Update the current slider value (each time you drag the slider handle)
+  // update current slider value (each time the slider handle is dragged)
   slider.oninput = function() {
-      output.innerHTML = this.value;
-      color_Country(allCountries, volcanoes_country, erruptions[this.value])
-      MakeMap(error, colorCountry)
+      output.innerHTML = this.value
+      slidervalue = this.value
+      updateMap(slidervalue)
   }
 
-        // color_Country(allCountries, volcanoes_country)
-        // MakeMap(error, colorCountry)
+  function updateMap(slidervalue) {
+    d3.select('#map').select('svg').remove();
+    color_Country(allCountries, volcanoes_country, erruptions[slidervalue])
+    MakeMap(error, colorCountry, volcanoes_country, allTypes)
+  }
 
-      // ready_donutdata(all_volcano_types, count_types)
-      // makeDonut(donutdata)
+
+
 })
 // })
 //   });
