@@ -23,3 +23,6 @@
 
 # day 11
 - I made a few changes in the python code and created the worldmap based on the new dataset. I also added a slider which allows the user to see in which year in which country a volcano erupted.
+
+# day 12
+- Completed an update function for the map that allows the slider to change the values. After that, I started working on the donut chart which shows all types existing in one country. If the user clicks on a country on the map, a donutchart appears. However the counter for the donutchart does not show the correct amount yet.
