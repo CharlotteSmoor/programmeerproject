@@ -26,3 +26,7 @@
 
 # day 12
 - Completed an update function for the map that allows the slider to change the values. After that, I started working on the donut chart which shows all types existing in one country. If the user clicks on a country on the map, a donutchart appears. However the counter for the donutchart does not show the correct amount yet.
+
+# day 13
+- finished the implementation of the donut chart. Had a few problems with calculating the percentage of types for the donutchart because it also showed types eventhough the percentage was 0, but I was able to fix it eventually. I also started the implementation of the scatterplot.
+
