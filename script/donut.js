@@ -3,26 +3,30 @@
 
 function ready_donutdata(data, list){
   var donutdata = []
-  var counter = []
   var total_volcanoes = Object.keys(data).length
-  for (var i = 0; i < list.length; i++){
-      var count = 0;
-      Object.keys(data).forEach(function(key) {
-        if (data[key] == list[i]){
-          count = count + 1
-          var type = list[i]
-          donutdata.push({type: type, percentage: parseFloat(((count/(total_volcanoes)*100))).toFixed(2)})
+  if (data != undefined || data != null){
 
-        }
-
-    })
-  }
-    console.log(donutdata)
-    return donutdata
+    for (var i = 0; i < list.length; i++){
+        var count = 0;
+        Object.keys(data).forEach(function(key) {
+          if (data[key] == list[i]){
+            count++;
+          }
+      })
+      if(count != 0){
+        donutdata.push({type: list[i], percentage: parseFloat(((count/(total_volcanoes)*100))).toFixed(2)})
+      }
+    }
+      return donutdata
+      console.log(total_volcanoes)
+    } else{
+      console.log("alert")
+    }
 }
 
 function makeDonut(donutdata){
-  var pie=d3.layout.pie()
+
+var pie=d3.layout.pie()
     .value(function(d){return d.percentage})
     .sort(null)
     .padAngle(.03);
@@ -30,7 +34,7 @@ function makeDonut(donutdata){
   var w=300,h=1000;
 
   var outerRadius=w/2;
-  var innerRadius=100;
+  var innerRadius=(outerRadius-60);
 
   var color = d3.scale.category20();
 
@@ -38,7 +42,7 @@ function makeDonut(donutdata){
     .outerRadius(outerRadius)
     .innerRadius(innerRadius);
 
-  var svg=d3.select("#chart")
+  var svg=d3.select("#donut")
     .append("svg")
     .attr({
         width:w,
@@ -57,7 +61,12 @@ function makeDonut(donutdata){
         fill:function(d,i){
             return color(d.data.type);
         }
-    });
+    })
+//     .on("click", function() {
+//       d3.select(this).transition()
+//           createScatter();
+// });
+
 
   path.transition()
     .duration(1000)

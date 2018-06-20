@@ -29,6 +29,7 @@ function load_data(data){
       if (error) throw error;
       var allCountries = ["ATA","CAN","CHL","CHN","CMR","COG","COL","COM","CPV","CRI","ECU","ERI","ESP","ETH","GLP","GRC","GTM","IDN","ISL","ITA","JPN","KNA","MEX","MSR","MTQ","NIC","NZL","PER","PHL","PNG","PRK","PRT","RUS","SAU","SLB","SLV","TON","TTO","TUR","TWN","TZA","USA","VCT","VUT","WSM","YEM"]
       var allTypes = ["Caldera","Pyroclastic cone","Submarine volcano","Stratovolcano","Maar","Shield volcano","Complex volcano","Fissure vent","Pumice cone","Subglacial volcano","Crater rows","Tuff cone","Cinder cone","Lava dome","Pyroclastic shield","Volcanic field","Mud volcano"]
+      console.log(volcanoes_country)
   //     var volcanos_per_country = [];
   //       for (var i = 1; i < eruptions.length; i++){
   //         for(var j = 0; j < country_codes.length; j++){

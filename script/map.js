@@ -33,8 +33,6 @@ function MakeMap(error, colorCountry, volcanoes_country, allTypes) {
       var location = geography.id
       var volcano_location = volcanoes_country[location]
       donutdata = ready_donutdata(volcano_location, allTypes)
-
-      // makeDonut(donutdata)
       updateDonut(donutdata)
     });
   },
@@ -59,6 +57,6 @@ function MakeMap(error, colorCountry, volcanoes_country, allTypes) {
 }
 
 function updateDonut(donutdata){
-  d3.select('#chart').select('svg').remove();
+  d3.select("#donut").select("svg").remove()
   makeDonut(donutdata)
 }
