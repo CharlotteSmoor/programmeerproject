@@ -33,3 +33,6 @@
 # day 14
 - I processed the data for the scatterplot based on the type of volcano and worked on the implementation of the scatterplot. I also ensured that the donutchart and the scatterplot are linked, so when the user clicks on a specific type in the donutchart the correct scatterplot will appear. 
 
+# day 15
+- finished the implementation of the scatterplot which now works correctly. I also began to style the main page, but the visualisation still need styling. 
+
