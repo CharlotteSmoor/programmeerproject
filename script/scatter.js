@@ -1,87 +1,153 @@
-function ready_scatterdata(){
-  
-}
-function createScatter(){
-// calculates largest amount in array
-var max_of_array = Math.max.apply(Math, pokemon_types);
-
-// set margin, width and height for the whole graph
-var margin = {top: 10, right: 10, bottom: 50, left: 50};
-var padding = 1;
-var fullwidth = 750;
-var fullheight = 400;
-var width = 700 - margin.left - margin.right;
-var height = 350 - margin.top - margin.bottom;
-
-// obtained implementation of tooltip from: http://bl.ocks.org/Caged/6476579
-var tip = d3.tip()
-  .attr('class', 'd3-tip')
-  .offset([-10, 0])
-  .html(function(d) {
-    return "<strong>Amount of Pokémon:</strong><span style='color:white'>" + d + "</span>";
+function readyScatter(type, data){
+  // console.log(data[type])
+  scatterdata = []
+  var test = data[type];
+  test.forEach(function(d){
+    name = d.name
+    year = d.year
+    vei = d.vei
+    total_deaths = d.total_deaths
+    scatterdata.push({type: type, name: name, year: year, vei: vei, total_deaths: total_deaths})
   })
 
-// create SVG element
-var svg = d3.select("body")
-  .append("svg")
-   .attr("width", fullwidth)
-   .attr("height", fullheight)
-  .append("g")
-   .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+}
+function createScatter(scatterdata){
+// calculates largest amount in array
+var max_yAxis = d3.max(scatterdata, function(d) { return d.vei ; } ) * 1.1;
+var min_xAxis = d3.min(scatterdata, function(d) { return d.year; } ) * 1.1;
+var max_xAxis = d3.max(scatterdata, function(d) { return d.year; } ) * 1.1;
 
-   svg.call(tip);
+var margin = {
+        top: 20,
+        right: 210,
+        bottom: 50,
+        left: 70
+    },
+    outerWidth = 800,
+    outerHeight = 500,
+    width = outerWidth - margin.left - margin.right,
+    height = outerHeight - margin.top - margin.bottom;
 
- // scale x and y axes,
- // use of rangeRoundBands inspired by https://bost.ocks.org/mike/bar/3/
- var x = d3.scale.ordinal()
-     .domain(d3.range(type.length))
-     .rangeRoundBands([0, width], .05);
+var x = d3.scale.linear()
+    .range([0, width]).nice();
 
- var y = d3.scale.linear()
-    .domain([0, max_of_array])
-    .range([height, 0]);
+var y = d3.scale.linear()
+    .range([height, 0]).nice();
 
- var xAxis = d3.svg.axis()
-     .scale(x)
-     .orient("bottom")
-     .tickFormat(function(d) { return type[d]; })
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom")
+    // .tickSize(-height);
 
- var yAxis = d3.svg.axis()
-     .scale(y)
-     .orient("left")
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left")
+    // .tickSize(-width);
 
-// create bars and hide and show tooltip
-svg.selectAll("rect")
-  .data(pokemon_types)
-  .enter()
-  .append("rect")
-  .attr("class", "bar")
-  .attr("x", function (d, i){ return x(i);})
-  .attr("y", function (d){ return y(d);})
-  .attr("width", x.rangeBand())
-  .attr("height", function (d){ return height - y(d);})
-  .on('mouseover', tip.show)
-  .on('mouseout', tip.hide)
+var tip = d3.tip()
+        .attr("class", "d3-tip")
+        .offset([-10, 0])
+        .html(function(d) {
+            return "Name" + ": " + d.name + "<br>" + "Year" + ": " + d.year + "<br>" + "VEI" + ": " + d.vei + "<br>" + "deaths" + ": " + d.total_deaths;
+        });
 
-// provide x-axis
-svg.append("g")
-     .attr("class", "x axis")
-     .attr("transform", "translate(0," + height + ")")
-     .call(xAxis)
-     .selectAll("text")
-      .style("text-anchor", "end")
-      .attr("dx", "-.8em")
-      .attr("dy", ".15em")
-      .attr("transform", function(d) { return "rotate(-65)"});
+    var xMin = min_xAxis > 0 ? 0 : min_xAxis;
 
-// provide y-axis
-svg.append("g")
-    .attr("class", "y axis")
-    .call(yAxis)
-  .append("text")
-    .text("# Pokémons")
-    .style("text-anchor", "end")
-    .attr("y", -35)
-    .attr("dy", ".201em")
-    .attr("transform", "rotate(-90)");
+    x.domain([xMin, max_xAxis]);
+    y.domain([0, max_yAxis]);
+
+    var color = d3.scale.category20();
+
+    var svg = d3.select("#scatter")
+        .append("svg")
+        .attr("width", outerWidth)
+        .attr("height", outerHeight)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+    svg.call(tip);
+    svg.append("rect")
+        .attr("width", width)
+        .attr("height", height);
+    svg.append("g")
+        .classed("x axis", true)
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis)
+        .append("text")
+        .attr("x", width)
+        .attr("y", margin.bottom - 10)
+        .style("text-anchor", "end")
+        .text("Years");
+    svg.append("g")
+        .classed("y axis", true)
+        .call(yAxis)
+        .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -margin.left)
+        .attr("dy", "1.5em")
+        .style("text-anchor", "end")
+        .text("VEI");
+
+    var objects = svg.append("svg")
+        .classed("objects", true)
+        .attr("width", width)
+        .attr("height", height);
+
+    objects.selectAll(".dot")
+        .data(scatterdata)
+        .enter().append("circle")
+        .classed("dot", true)
+        .attr({
+          r: function(d) {
+                return 10;
+            },
+            cx: function(d) {
+                return x(d.year);
+            },
+            cy: function(d) {
+                return y(d.vei);
+            }
+        })
+    .style("fill", function(d) {
+        return color(d.name);
+    })
+        .on("mouseover", tip.show)
+        .on("mouseout", tip.hide);
+
+    var legend = svg.selectAll(".legend")
+        .data(color.domain())
+        .enter().append("g")
+        .classed("legend", true)
+        .attr("transform", function(d, i) {
+            return "translate(0," + i * 20 + ")";
+        });
+    legend.append("rect")
+        .attr("x", width + 10)
+        .attr("width", 12)
+        .attr("height", 12)
+        .style("fill", color);
+    legend.on("click", function(type) {
+        // dim all of the icons in legend
+        d3.selectAll(".legend")
+            .style("opacity", 1);
+        // make the one selected be un-dimmed
+        d3.select(this)
+            .style("opacity", 1);
+        // select all dots and apply 0 opacity (hide)
+        d3.selectAll(".dot")
+        // .transition()
+        // .duration(500)
+        .style("opacity", 0.1)
+
+    });
+    legend.append("text")
+        .attr("x", width + 26)
+        .attr("dy", ".65em")
+        .text(function(d) {
+            return d;
+        });
+};
+
+function updateScatter(scatterdata){
+  d3.select("#scatter").select("svg").remove()
+  createScatter(scatterdata)
 }

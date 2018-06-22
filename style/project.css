@@ -12,14 +12,15 @@
   font-size: 17px;
 }
 
-.topnav li a:hover {
-  background-color: #4CAF50;
+.topnav a:hover {
+  background-color: #ddd;
   color: black;
 }
-.col-centered {
-  text-align:center;
-}
 
+.topnav a.home {
+  background-color: green;
+  color: white;
+}
 body {
     background-color: #1B1F2A;
     width: 100%;

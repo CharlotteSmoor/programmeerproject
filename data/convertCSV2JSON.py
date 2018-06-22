@@ -86,16 +86,49 @@ def countriesToCodes(filename):
              temp = countriesAndTheirVolcanoesData.get(key)
              newKeyValue = countryCodes.get(key)
              updatedCountriesAndTheirVolcanoes[newKeyValue] = value
-             
+
          #update json
          f.seek(0)
          f.truncate()
          json.dump(updatedCountriesAndTheirVolcanoes, f)
 
+def convertToType():
+    f=open('testdata.csv', 'r')
+    csv_reader = csv.DictReader(f, fieldNames)
+    next(csv_reader) #skip the first line of the csv file
+
+    #dict that will hold the new json data
+    types = {}
+
+    # go through each row in the file and get the relevant data
+    for row in csv_reader:
+        type = row['Type']
+        year = row['Year']
+        vei = row['VEI']
+        name = row['Name']
+        deaths = row['TOTAL_DEATHS']
+
+        if type not in types:
+            types[type] = []
+        types[type].append({"name": name, "year": year, "vei": vei, "total_deaths": deaths})
+        # if year not in types[type]:
+        #     types[type][year] = []
+        # if vei not in types[type][year]:
+        #     types[type][year] = vei
+
+        # if deaths not in types[type][year][vei]:
+        #     types[type][year][vei] = deaths
+
+    with open('types.json', 'w') as outfile:
+        json.dump(types, outfile)
+    f.close()
+
+
 if __name__=="__main__":
     if len(sys.argv) is 1:
         #countriesToCodes(sys.argv[1:])
         #convertCountryCodes(sys.argv[1:])
-        convertToEruptionByYear()
+        # convertToEruptionByYear()
+        convertToType()
     else:
         print("Please give valid input: convertCSV2JSON.py filename")

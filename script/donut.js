@@ -24,7 +24,7 @@ function ready_donutdata(data, list){
     }
 }
 
-function makeDonut(donutdata){
+function makeDonut(donutdata, types){
 
 var pie=d3.layout.pie()
     .value(function(d){return d.percentage})
@@ -41,6 +41,14 @@ var pie=d3.layout.pie()
   var arc=d3.svg.arc()
     .outerRadius(outerRadius)
     .innerRadius(innerRadius);
+
+    var tooltip = d3.select("body")
+      .append("div")
+      .style("position", "absolute")
+      .style("z-index", "10")
+      .style("visibility", "hidden")
+      .style("background", "#000")
+      .text("a simple tooltip");
 
   var svg=d3.select("#donut")
     .append("svg")
@@ -62,10 +70,14 @@ var pie=d3.layout.pie()
             return color(d.data.type);
         }
     })
-//     .on("click", function() {
-//       d3.select(this).transition()
-//           createScatter();
-// });
+    .on("click", function(d) {
+      d3.select(this).transition()
+      // console.log(this)
+      // .on("mouseover", function(d) {
+      type = d.data.type
+      readyScatter(type,types)
+      updateScatter(scatterdata);
+});
 
 
   path.transition()
@@ -140,4 +152,9 @@ var pie=d3.layout.pie()
   };
 
   setTimeout(restOfTheData,1000);
+}
+
+function updateDonut(donutdata, types){
+  d3.select("#donut").select("svg").remove()
+  makeDonut(donutdata, types)
 }

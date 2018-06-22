@@ -17,13 +17,13 @@ function color_Country(list, alldata, specific_year_data) {
 }
 
 // creates world map
-function MakeMap(error, colorCountry, volcanoes_country, allTypes) {
+function MakeMap(error, colorCountry, volcanoes_country, allTypes, types) {
   if (error) throw error;
     var map = new Datamap({element: document.getElementById('map'),
     fills: {
-      ALL: '#a50f15',
-      YEAR: 'orange',
-      defaultFill: "green"
+      ALL: '#4CAF50',
+      YEAR: 'darkgreen',
+      defaultFill: '#c6c4c4'
   },
   data: colorCountry,
   // responsive: true,
@@ -33,7 +33,7 @@ function MakeMap(error, colorCountry, volcanoes_country, allTypes) {
       var location = geography.id
       var volcano_location = volcanoes_country[location]
       donutdata = ready_donutdata(volcano_location, allTypes)
-      updateDonut(donutdata)
+      updateDonut(donutdata, types)
     });
   },
   geographyConfig: {
@@ -54,9 +54,4 @@ function MakeMap(error, colorCountry, volcanoes_country, allTypes) {
       highlightFillColor: function(geo) {return geo["fillColor"] || "orange"; },
 
  });
-}
-
-function updateDonut(donutdata){
-  d3.select("#donut").select("svg").remove()
-  makeDonut(donutdata)
 }
