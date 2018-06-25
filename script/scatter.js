@@ -23,8 +23,8 @@ var margin = {
         bottom: 50,
         left: 70
     },
-    outerWidth = 800,
-    outerHeight = 500,
+    outerWidth = 1000,
+    outerHeight = 400,
     width = outerWidth - margin.left - margin.right,
     height = outerHeight - margin.top - margin.bottom;
 
@@ -56,7 +56,9 @@ var tip = d3.tip()
     x.domain([xMin, max_xAxis]);
     y.domain([0, max_yAxis]);
 
-    var color = d3.scale.category20();
+    // var color = d3.scale.category20();
+    var color = d3.scale.ordinal()
+        .range(['#a1d99b', '#74c476', '#41ab5d', '#4CAF50', '#238b45', '#006d2c', '#00441b']);
 
     var svg = d3.select("#scatter")
         .append("svg")
@@ -82,7 +84,7 @@ var tip = d3.tip()
         .call(yAxis)
         .append("text")
         .attr("transform", "rotate(-90)")
-        .attr("y", -margin.left)
+        .attr("y", - margin.left)
         .attr("dy", "1.5em")
         .style("text-anchor", "end")
         .text("VEI");
@@ -113,38 +115,38 @@ var tip = d3.tip()
         .on("mouseover", tip.show)
         .on("mouseout", tip.hide);
 
-    var legend = svg.selectAll(".legend")
-        .data(color.domain())
-        .enter().append("g")
-        .classed("legend", true)
-        .attr("transform", function(d, i) {
-            return "translate(0," + i * 20 + ")";
-        });
-    legend.append("rect")
-        .attr("x", width + 10)
-        .attr("width", 12)
-        .attr("height", 12)
-        .style("fill", color);
-    legend.on("click", function(type) {
-        // dim all of the icons in legend
-        d3.selectAll(".legend")
-            .style("opacity", 1);
-        // make the one selected be un-dimmed
-        d3.select(this)
-            .style("opacity", 1);
-        // select all dots and apply 0 opacity (hide)
-        d3.selectAll(".dot")
-        // .transition()
-        // .duration(500)
-        .style("opacity", 0.1)
-
-    });
-    legend.append("text")
-        .attr("x", width + 26)
-        .attr("dy", ".65em")
-        .text(function(d) {
-            return d;
-        });
+    // var legend = svg.selectAll(".legend")
+    //     .data(color.domain())
+    //     .enter().append("g")
+    //     .classed("legend", true)
+    //     .attr("transform", function(d, i) {
+    //         return "translate(0," + i * 20 + ")";
+    //     });
+    // legend.append("rect")
+    //     .attr("x", width + 10)
+    //     .attr("width", 12)
+    //     .attr("height", 12)
+    //     .style("fill", color);
+    // legend.on("click", function(type) {
+    //     // dim all of the icons in legend
+    //     d3.selectAll(".legend")
+    //         .style("opacity", 1);
+    //     // make the one selected be un-dimmed
+    //     d3.select(this)
+    //         .style("opacity", 1);
+    //     // select all dots and apply 0 opacity (hide)
+    //     d3.selectAll(".dot")
+    //     // .transition()
+    //     // .duration(500)
+    //     .style("opacity", 0.1)
+    //
+    // });
+    // legend.append("text")
+    //     .attr("x", width + 26)
+    //     .attr("dy", ".65em")
+    //     .text(function(d) {
+    //         return d;
+    //     });
 };
 
 function updateScatter(scatterdata){

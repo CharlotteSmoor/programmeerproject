@@ -1,16 +1,20 @@
 // World map
 
-function color_Country(list, alldata, specific_year_data) {
+function color_Country(list, alldata, specific_year_data, dropdown_value) {
         colorCountry = {}
+        colorCountry[dropdown_value] = {fillKey: "SELECTED", value: dropdown_value}
 
         for (var i = 0; i < list.length; i++){
           country = list[i]
-          colorCountry[country] = {fillKey: "ALL", value: alldata[list[i]]}
-        }
-        if (specific_year_data != undefined || specific_year_data != null){
-          for (var j = 0; j < specific_year_data.length; j++){
-            country = specific_year_data[j]
-            colorCountry[country] = {fillKey: "YEAR", value: specific_year_data[j]}
+          if (country != dropdown_value){
+            colorCountry[country] = {fillKey: "ALL", value: alldata[list[i]]}
+
+            if (specific_year_data != undefined || specific_year_data != null){
+              for (var j = 0; j < specific_year_data.length; j++){
+                country = specific_year_data[j]
+                colorCountry[country] = {fillKey: "YEAR", value: specific_year_data[j]}
+              }
+            }
           }
         }
         return colorCountry
@@ -21,8 +25,9 @@ function MakeMap(error, colorCountry, volcanoes_country, allTypes, types) {
   if (error) throw error;
     var map = new Datamap({element: document.getElementById('map'),
     fills: {
+      SELECTED: '#a50f15',
       ALL: '#4CAF50',
-      YEAR: 'darkgreen',
+      YEAR: '#238b45',
       defaultFill: '#c6c4c4'
   },
   data: colorCountry,

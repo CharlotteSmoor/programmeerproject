@@ -3,6 +3,10 @@
 <html>
   <head>
     <title>Volcanoes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
     <script src="https://d3js.org/d3.v3.min.js"></script>
         <script src="https://d3js.org/queue.v1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
@@ -19,6 +23,8 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
   </head>
   <body>
     <div class="topnav">
@@ -30,24 +36,65 @@
     </div>
     <div class="jumbotron text-center">
        <div class="top"><h1>Volcanoes</h1></div>
-  </div>
-        <div class="row">
-            <div class="col-md-2">
-                  <div id="donut" ></div>
-            </div>
-            <div class="col-md-5 col-centered">
+     </div>
+     <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          <div id="donut">
+          </div>
+          </div>
+          <div class="col-sm">
               <div class="slidecontainer">
                 <input type="range" min="1500" max="2018" value="1" class="slider" id="myRange">
                 <p>Year: <span id="demo"></span></p>
               </div>
-                    <div id="map" style="position: relative; width: 600px; height: 600px; "></div>
+                <div id="map" style="position: relative; width: 800px; height: 600px; "></div>
+              </div>
+            <div class="col-sm">
+            <div class="dropdown">
+                                  <button class="btn dropdown-toggle" type="button" data-toggle="dropdown">Select country</button>
+                                  <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" value="all">All countries</a></li>
+                                    <li><a class="dropdown-item" value="CMR">Cameroon</a></li>
+                                    <li><a class="dropdown-item" value="CAN">Canada</a></li>
+                                    <li><a class="dropdown-item" value="CHL">Chile</a></li>
+                                    <li><a class="dropdown-item" value="CHN">China</a></li>
+                                    <li><a class="dropdown-item" value="COL">Colombia</a></li>
+                                    <li><a class="dropdown-item" value="COG">Congo</a></li>
+                                    <li><a class="dropdown-item" value="CRI">Costa Rica</a></li>
+                                    <li><a class="dropdown-item" value="ECU">Ecuador</a></li>
+                                    <li><a class="dropdown-item" value="SLV">El Salvador</a></li>
+                                    <li><a class="dropdown-item" value="ERI">Eritrea</a></li>
+                                    <li><a class="dropdown-item" value="ETH">Ethiopia</a></li>
+                                    <li><a class="dropdown-item" value="GRC">Greece</a></li>
+                                    <li><a class="dropdown-item" value="GTM">Guatemala</a></li>
+                                    <li><a class="dropdown-item" value="ISL">Iceland</a></li>
+                                    <li><a class="dropdown-item" value="IDN">Indonesia</a></li>
+                                    <li><a class="dropdown-item" value="ITA">Italy</a></li>
+                                    <li><a class="dropdown-item" value="JPN">Japan</a></li>
+                                    <li><a class="dropdown-item" value="MEX">Mexico</a></li>
+                                    <li><a class="dropdown-item" value="NZL">New Zealand</a></li>
+                                    <li><a class="dropdown-item" value="NIC">Nicaragua</a></li>
+                                    <li><a class="dropdown-item" value="PRK">North Korea</a></li>
+                                    <li><a class="dropdown-item" value="PNG">Papua New Guinea</a></li>
+                                    <li><a class="dropdown-item" value="PER">Peru</a></li>
+                                    <li><a class="dropdown-item" value="PHL">Philippines</a></li>
+                                    <li><a class="dropdown-item" value="PRT">Portugal</a></li>
+                                    <li><a class="dropdown-item" value="RUS">Russia</a></li>
+                                    <li><a class="dropdown-item" value="SAU">Saudi Arabia</a></li>
+                                    <li><a class="dropdown-item" value="ESP">Spain</a></li>
+                                    <li><a class="dropdown-item" value="TWN">Taiwan</a></li>
+                                    <li><a class="dropdown-item" value="TZA">Tanzania</a></li>
+                                    <li><a class="dropdown-item" value="TUR">Turkey</a></li>
+                                    <li><a class="dropdown-item" value="USA">United States</a></li>
+                                    <li><a class="dropdown-item" value="YEM">Yemen</a></li>
+                                  </ul>
+                              </div>
             </div>
-            <div class="col-md-5">
-              <div id="scatter"></div>
-            </div>
-    <!-- <div class="header">Types of volcanoes </div> -->
-    <!-- <div id="chart"  style="position: absolute; width: 100px; height: 1px; left: 10px" class="chart-container" ></div> -->
-
+      </div>
+<div class="row">
+  <div id="scatter"></div>
+</div>
 </div>
 </body>
 </html>

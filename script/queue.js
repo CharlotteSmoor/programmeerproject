@@ -15,11 +15,12 @@ function load_data(data){
       if (error) throw error;
       var allCountries = ["ATA","CAN","CHL","CHN","CMR","COG","COL","COM","CPV","CRI","ECU","ERI","ESP","ETH","GLP","GRC","GTM","IDN","ISL","ITA","JPN","KNA","MEX","MSR","MTQ","NIC","NZL","PER","PHL","PNG","PRK","PRT","RUS","SAU","SLB","SLV","TON","TTO","TUR","TWN","TZA","USA","VCT","VUT","WSM","YEM"]
       var allTypes = ["Caldera","Pyroclastic cone","Submarine volcano","Stratovolcano","Maar","Shield volcano","Complex volcano","Fissure vent","Pumice cone","Subglacial volcano","Crater rows","Tuff cone","Cinder cone","Lava dome","Pyroclastic shield","Volcanic field","Mud volcano"]
-      console.log(types)
 
-      color_Country(allCountries, volcanoes_country, [])
-      MakeMap(error, colorCountry)
-
+      // dropdown menu
+      d3.selectAll(".dropdown-item").on("click", function(){
+        var dropdown_value = this.getAttribute("value");
+        updateMap([], dropdown_value)
+      })
 
       // implementation of the slider
       var slider = document.getElementById("myRange");
@@ -30,15 +31,14 @@ function load_data(data){
       slider.oninput = function() {
           output.innerHTML = this.value
           slidervalue = this.value
-          updateMap(slidervalue)
-      }
+          updateMap(slidervalue, [])
+        }
 
-      function updateMap(slidervalue) {
+      function updateMap(slidervalue, dropdown_value) {
         d3.select('#map').select('svg').remove();
-        color_Country(allCountries, volcanoes_country, erruptions[slidervalue])
+        color_Country(allCountries, volcanoes_country, erruptions[slidervalue], dropdown_value)
         MakeMap(error, colorCountry, volcanoes_country, allTypes, types)
       }
-
       })
     })
   });

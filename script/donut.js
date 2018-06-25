@@ -5,7 +5,6 @@ function ready_donutdata(data, list){
   var donutdata = []
   var total_volcanoes = Object.keys(data).length
   if (data != undefined || data != null){
-
     for (var i = 0; i < list.length; i++){
         var count = 0;
         Object.keys(data).forEach(function(key) {
@@ -19,8 +18,6 @@ function ready_donutdata(data, list){
     }
       return donutdata
       console.log(total_volcanoes)
-    } else{
-      console.log("alert")
     }
 }
 
@@ -36,7 +33,11 @@ var pie=d3.layout.pie()
   var outerRadius=w/2;
   var innerRadius=(outerRadius-60);
 
-  var color = d3.scale.category20();
+  // var color = d3.scale.category20();
+  var color = d3.scale.ordinal()
+      .range(['#a1d99b', '#74c476', '#41ab5d', '#4CAF50', '#238b45', '#006d2c', '#00441b']);
+
+// '#4CAF50', "#7ebe03", "#bbfc3d"
 
   var arc=d3.svg.arc()
     .outerRadius(outerRadius)
@@ -78,6 +79,15 @@ var pie=d3.layout.pie()
       readyScatter(type,types)
       updateScatter(scatterdata);
 });
+
+// svg.append("text")
+//         .attr("x", 0)
+//         .attr("y", -200)
+//         .attr("text-anchor", "middle")
+//         .style("font-size", "16px")
+//         .style("text-decoration", "underline")
+//         .text("Types of volcanoes in" + '<strong>', volcano_location, '</strong>')
+      // });
 
 
   path.transition()

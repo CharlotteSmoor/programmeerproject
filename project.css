@@ -16,7 +16,8 @@
   background-color: #4CAF50;
   color: black;
 }
-.col-centered {
+.centered{
+  margin: auto;
   text-align:center;
 }
 

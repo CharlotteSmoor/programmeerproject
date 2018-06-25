@@ -111,13 +111,6 @@ def convertToType():
         if type not in types:
             types[type] = []
         types[type].append({"name": name, "year": year, "vei": vei, "total_deaths": deaths})
-        # if year not in types[type]:
-        #     types[type][year] = []
-        # if vei not in types[type][year]:
-        #     types[type][year] = vei
-
-        # if deaths not in types[type][year][vei]:
-        #     types[type][year][vei] = deaths
 
     with open('types.json', 'w') as outfile:
         json.dump(types, outfile)
@@ -125,10 +118,11 @@ def convertToType():
 
 
 if __name__=="__main__":
-    if len(sys.argv) is 1:
-        #countriesToCodes(sys.argv[1:])
+    if len(sys.argv) is 2:
+        #convert(sys.argv[1:])
+        countriesToCodes(sys.argv[1:])
         #convertCountryCodes(sys.argv[1:])
-        # convertToEruptionByYear()
-        convertToType()
+        #convertToEruptionByYear()
+        #convertToType()
     else:
         print("Please give valid input: convertCSV2JSON.py filename")
