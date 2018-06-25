@@ -36,3 +36,6 @@
 # day 15
 - finished the implementation of the scatterplot which now works correctly. I also began to style the main page, but the visualisation still need styling. 
 
+# day 16
+- implemented a dropdown menu which allows the user to select a country and in the map the selected country will light up. After that I styled the visualisations and the main page.
+
