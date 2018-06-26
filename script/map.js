@@ -51,7 +51,6 @@ function MakeMap(error, colorCountry, volcanoes_country, allTypes, types) {
         }
           return ['<div class="hoverinfo"><strong>',
               geo.properties.name, '</strong>',
-            '<br>Volcanoes: <strong>', data.value, '</strong>',
             '</div>'].join('');},
       },
       popOnHover: true,

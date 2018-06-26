@@ -3,34 +3,51 @@
 <html>
   <head>
     <title>Volcanoes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
     <script src="https://d3js.org/d3.v3.min.js"></script>
         <script src="https://d3js.org/queue.v1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.9/topojson.min.js"></script>
+        <script src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.6.7/d3-tip.js">	 </script>
         <script type="text/javascript" src="script/queue.js"></script>
         <script type="text/javascript" src="script/map.js"></script>
         <script type="text/javascript" src="script/donut.js"></script>
+        <script type="text/javascript" src="script/scatter.js"></script>
         <script src="data/datamaps.world.min.js"></script>
-        <link rel="stylesheet" href="project.css">
+        <link rel="stylesheet" href="style/project.css">
+        <link rel="stylesheet" href="style/scatter.css">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
-
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
   </head>
-  <body>
-    <div id="wrapper">
-      <div class="topnav">
-        <a class="home" href="index.html">Home</a>
-        <a href="visualisations.html">Data Visualisation</a>
+  <body style="background-color:#e5f5e0;">
+    <div class="topnav">
+  <ul>
+    <a href="index.html">Home</a>
+    <a href="visualisations.html">Data Visualisation</a>
+    <li style="float:right"><a class="active" href="https://github.com/CharlotteSmoor">Charlotte Smoor 10786902</a></li>
+</ul>
     </div>
-
-    <div align="center" class="embed-responsive embed-responsive-16by9">
-    <video autoplay loop class="embed-responsive-item">
-        <source src="animation/eruption.mp4" type="video/mp4">
-    </video>
-</div>
-
     <div class="jumbotron text-center">
        <div class="top"><h1>Volcanoes</h1></div>
-       <div class="top"><h5>Charlotte Smoor</h5></div>
-  </div>
-
+     </div>
+     <div class="container">
+       <div class="col-md-6">
+         <p>Volcanoes have helped shape our planet and provide life but also can take life away. </p>
+         </div>
+       <div class="col-md-6">
+     <div align="center" video class="img-responsive">
+     <video width="320"autoplay loop class="embed-responsive-item">
+         <source src="animation/volcano.mp4" type="video/mp4">
+     </video>
+    </div>
+      </div>
+    </div>
 </body>
 </html>

@@ -55,8 +55,7 @@ var pie=d3.layout.pie()
     .append("svg")
     .attr({
         width:w,
-        height:h,
-        class:'shadow'
+        height:800,
     }).append('g')
     .attr({
         transform:'translate('+w/2+','+h/2+')'

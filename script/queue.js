@@ -1,16 +1,16 @@
 // loads data
 window.onload = function() {
   queue()
-  .defer(d3.json, '/data/volcanoesByCountry.json')
-  .defer(d3.json, '/data/erruptionsByYear.json')
-  .defer(d3.json, '/data/types.json')
+  .defer(d3.json, 'data/volcanoesByCountry.json')
+  .defer(d3.json, 'data/erruptionsByYear.json')
+  .defer(d3.json, 'data/types.json')
   .awaitAll(load_data);
 }
 
 function load_data(data){
-  d3.json('/data/volcanoesByCountry.json', function(error, volcanoes_country){
-    d3.json('/data/erruptionsByYear.json', function(error, erruptions){
-      d3.json('/data/types.json', function(error, types){
+  d3.json('data/volcanoesByCountry.json', function(error, volcanoes_country){
+    d3.json('data/erruptionsByYear.json', function(error, erruptions){
+      d3.json('data/types.json', function(error, types){
 
       if (error) throw error;
       var allCountries = ["ATA","CAN","CHL","CHN","CMR","COG","COL","COM","CPV","CRI","ECU","ERI","ESP","ETH","GLP","GRC","GTM","IDN","ISL","ITA","JPN","KNA","MEX","MSR","MTQ","NIC","NZL","PER","PHL","PNG","PRK","PRT","RUS","SAU","SLB","SLV","TON","TTO","TUR","TWN","TZA","USA","VCT","VUT","WSM","YEM"]
