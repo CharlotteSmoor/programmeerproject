@@ -7,12 +7,12 @@ function color_Country(list, alldata, specific_year_data, dropdown_value) {
         for (var i = 0; i < list.length; i++){
           country = list[i]
           if (country != dropdown_value){
-            colorCountry[country] = {fillKey: "ALL", value: alldata[list[i]]}
+            colorCountry[country] = {fillKey: "All eruptions", value: alldata[list[i]]}
 
             if (specific_year_data != undefined || specific_year_data != null){
               for (var j = 0; j < specific_year_data.length; j++){
                 country = specific_year_data[j]
-                colorCountry[country] = {fillKey: "YEAR", value: specific_year_data[j]}
+                colorCountry[country] = {fillKey: "Eruption in selected year", value: specific_year_data[j]}
               }
             }
           }
@@ -26,8 +26,8 @@ function MakeMap(error, colorCountry, volcanoes_country, allTypes, types) {
     var map = new Datamap({element: document.getElementById('map'),
     fills: {
       SELECTED: '#a50f15',
-      ALL: '#4CAF50',
-      YEAR: '#238b45',
+      "All eruptions": '#4CAF50',
+      "Eruption in selected year": '#238b45',
       defaultFill: '#c6c4c4'
   },
   data: colorCountry,
@@ -38,7 +38,7 @@ function MakeMap(error, colorCountry, volcanoes_country, allTypes, types) {
       var location = geography.id
       var volcano_location = volcanoes_country[location]
       donutdata = ready_donutdata(volcano_location, allTypes)
-      updateDonut(donutdata, types)
+      updateDonut(donutdata, location, types)
     });
   },
   geographyConfig: {
@@ -51,6 +51,7 @@ function MakeMap(error, colorCountry, volcanoes_country, allTypes, types) {
         }
           return ['<div class="hoverinfo"><strong>',
               geo.properties.name, '</strong>',
+            '<br>Volcanoes: <strong>', data.value, '</strong>',
             '</div>'].join('');},
       },
       popOnHover: true,
@@ -58,4 +59,6 @@ function MakeMap(error, colorCountry, volcanoes_country, allTypes, types) {
       highlightFillColor: function(geo) {return geo["fillColor"] || "orange"; },
 
  });
+   map.legend();
+
 }

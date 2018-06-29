@@ -12,9 +12,12 @@ function load_data(data){
     d3.json('data/erruptionsByYear.json', function(error, erruptions){
       d3.json('data/types.json', function(error, types){
 
+      console.log(volcanoes_country)
+
       if (error) throw error;
       var allCountries = ["ATA","CAN","CHL","CHN","CMR","COG","COL","COM","CPV","CRI","ECU","ERI","ESP","ETH","GLP","GRC","GTM","IDN","ISL","ITA","JPN","KNA","MEX","MSR","MTQ","NIC","NZL","PER","PHL","PNG","PRK","PRT","RUS","SAU","SLB","SLV","TON","TTO","TUR","TWN","TZA","USA","VCT","VUT","WSM","YEM"]
       var allTypes = ["Caldera","Pyroclastic cone","Submarine volcano","Stratovolcano","Maar","Shield volcano","Complex volcano","Fissure vent","Pumice cone","Subglacial volcano","Crater rows","Tuff cone","Cinder cone","Lava dome","Pyroclastic shield","Volcanic field","Mud volcano"]
+
 
       // dropdown menu
       d3.selectAll(".dropdown-item").on("click", function(){

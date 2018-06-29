@@ -87,7 +87,14 @@ var tip = d3.tip()
         .attr("y", - margin.left)
         .attr("dy", "1.5em")
         .style("text-anchor", "end")
-        .text("VEI");
+        .text("VEI")
+        svg.append("text")
+                .attr("x", width/2)
+                .attr("y", 0)
+                .attr("text-anchor", "middle")
+                .style("font-size", "16px")
+                .style('font-weight', 'bold')
+                .text(type);
 
     var objects = svg.append("svg")
         .classed("objects", true)

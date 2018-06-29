@@ -12,18 +12,10 @@
   font-size: 17px;
 }
 
-.topnav li a:hover {
+.topnav a:hover {
   background-color: #4CAF50;
   color: black;
 }
-.centered{
-  margin: auto;
-  text-align:center;
-}
-
-/* .img-responsive{
-
-} */
 
 body {
     background-color: #1B1F2A;
